@@ -1,0 +1,337 @@
+:root {
+  --color-bg-contrast: #333;
+  --color-bg-color: #fff;
+  --color-primary: #95879e;
+  --color-secondary: #d2ac84;
+  --color-text: #333;
+  --color-text-contrast: #fff;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --font-base-size: 15px;
+  --font-family: "Lato";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Utilities */
+.primary, a {
+  color: var(--color-primary);
+}
+
+.secondary {
+  color: var(--color-secondary);
+}
+
+.white {
+  color: white;
+}
+
+.small, #cards .card time, #ticker .line span {
+  font-size: 0.8em;
+}
+
+.big {
+  font-size: 1.2em;
+}
+
+/* Base */
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  line-height: 1.1em;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--color-bg-color);
+  font-size: var(--font-base-size);
+  line-height: 1.5em;
+  font-family: var(--font-family), sans-serif;
+}
+body > .wrap {
+  min-height: 80vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 250px auto 1fr auto;
+}
+
+header, nav, main, footer {
+  padding: 0.5em 1em;
+}
+
+header {
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-contrast);
+}
+header .headWrap {
+  text-align: center;
+}
+header .headWrap p {
+  padding: 0 2em;
+  position: relative;
+  top: -1.3em;
+  text-transform: uppercase;
+}
+header .headWrap h1 {
+  font-family: "Allura", cursive;
+  font-size: 3.2em;
+  line-height: 1em;
+}
+
+#ticker {
+  overflow: hidden;
+  background: var(--color-secondary);
+  color: var(--color-text-contrast);
+  white-space: nowrap;
+}
+#ticker .line {
+  display: inline-block;
+  padding-left: 20%;
+  animation: scroll 60s linear infinite;
+}
+#ticker .line span {
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+main {
+  margin-bottom: 8em;
+}
+main h2:first-of-type {
+  text-transform: uppercase;
+}
+main .news p {
+  font-size: 1em;
+  line-height: 1.8em;
+}
+main .pv {
+  padding-bottom: 1em;
+}
+
+#cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+#cards .card time {
+  padding: 0;
+}
+#cards .card h3 {
+  min-height: 3em;
+  background-color: var(--color-primary);
+  color: var(--color-text-contrast);
+  padding: 1em 1em 2em 1em;
+  margin: 0;
+}
+
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-text-contrast);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+footer a {
+  color: var(--color-text-contrast);
+}
+
+.page {
+  padding: 1em;
+}
+
+.contactPage form {
+  background: #fff;
+  border-radius: 0.5em;
+  padding: 1em;
+  box-shadow: 0 0 64px rgba(0, 0, 0, 0.08);
+}
+.contactPage .grid {
+  display: grid;
+  gap: 1em;
+}
+.contactPage .grid--two {
+  grid-template-columns: 1fr;
+}
+.contactPage .field {
+  margin-bottom: 0.5em;
+}
+.contactPage label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.contactPage .req {
+  color: var(--color-error);
+}
+.contactPage .opt {
+  color: #6b7280;
+  font-size: 0.85em;
+}
+.contactPage input, .contactPage textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.5em;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25em;
+  outline: none;
+}
+.contactPage input:focus, .contactPage textarea:focus {
+  border-color: var(--color-primary);
+}
+.contactPage input.invalid, .contactPage textarea.invalid {
+  border-color: var(--color-error);
+}
+.contactPage textarea {
+  min-height: 8em;
+  resize: vertical;
+}
+.contactPage .error-msg {
+  display: block;
+  color: var(--color-error);
+  margin-top: 0.25em;
+  min-height: 1em;
+  opacity: 0;
+}
+.contactPage .error-msg.show {
+  opacity: 1;
+}
+.contactPage .datenschutz {
+  margin: 1em 0;
+}
+.contactPage .datenschutz .checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 2em;
+  position: relative;
+}
+.contactPage .datenschutz .checkbox-container input[type=checkbox] {
+  position: absolute;
+  left: 0;
+  top: 0.125em;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0;
+}
+.contactPage .datenschutz .checkbox-container input[type=checkbox].invalid {
+  outline: 2px solid var(--color-error);
+  outline-offset: 1px;
+}
+.contactPage .datenschutz .checkbox-container .checkbox-label {
+  flex: 1;
+  line-height: 1.5;
+}
+.contactPage .datenschutz .checkbox-container .checkbox-label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.contactPage .datenschutz .error-msg {
+  margin-left: 2em;
+}
+.contactPage .actions {
+  margin-top: 1em;
+}
+.contactPage .actions button {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5em 1.5em;
+  border-radius: 0.25em;
+  font-weight: 600;
+}
+.contactPage .actions button .btn-loading {
+  display: none;
+}
+.contactPage .actions button:hover:not(:disabled) {
+  background: rgb(129.0055299539, 112.734562212, 139.465437788);
+}
+.contactPage .actions button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.contactPage .actions button.loading .btn-text {
+  display: none;
+}
+.contactPage .actions button.loading .btn-loading {
+  display: inline;
+}
+.contactPage .form-status {
+  margin-top: 1em;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.95em;
+  opacity: 0;
+  text-align: center;
+}
+.contactPage .form-status.show {
+  opacity: 1;
+}
+.contactPage .form-status.error {
+  background: #fef2f2;
+  color: var(--color-error);
+  border: 1px solid #fecaca;
+}
+.contactPage .form-status.success {
+  background: #f0fdf4;
+  color: var(--color-success);
+  border: 1px solid #bbf7d0;
+}
+
+@media (min-width: 640px) {
+  #cards, footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 920px) {
+  .contactPage .grid--two {
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+  }
+  #cards, footer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    box-shadow: 0 0 64px rgba(0, 0, 0, 0.08);
+  }
+  .contactPage form {
+    max-width: 48em;
+    margin: 0 auto;
+    padding: 1.5em;
+  }
+  header .headWrap {
+    font-size: 1.8em;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
