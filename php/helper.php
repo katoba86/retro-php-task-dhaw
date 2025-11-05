@@ -1,9 +1,12 @@
 <?php
-require_once "./includes/core/config.php";
 
-require_once "./includes/core/db.php";
+require_once "config.php";
+require_once "db.php";
 
-
+/**
+ * @param string $text
+ * @return string
+ */
 function textToHtml(string $text): string {
 
     $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
@@ -17,17 +20,16 @@ function textToHtml(string $text): string {
     return $html;
 }
 
+
 function simpleSlugify(string $text):string {
     $text = strtolower($text);
-
-    if (function_exists('iconv')) {
-        $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
-    }
     $text = preg_replace('/[^a-z0-9]+/', '-', $text);
-
     $text = preg_replace('/-+/', '-', $text);
     return trim($text, '-');
 }
+
+
+
 function transformNewsItem(array $item):array{
     $item['datetime'] = date("d.m.Y H:i;s",strtotime($item['datetime']));
     $slug = simpleSlugify($item['title']);

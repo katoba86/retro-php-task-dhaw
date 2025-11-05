@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/core/helper.php";
+require_once "./php/helper.php";
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="de">
@@ -23,7 +23,8 @@ require_once "./includes/core/helper.php";
                     foreach(getNews() as $news){
                         ?>
                         <article class="card">
-                            <h3><?=$news['title'];?></h3>
+                            <!-- seit HTML5 erlaubt! -->
+                            <a title="<?=$news['title'];?>" href="<?=$news['url'];?>"><h3><?=$news['title'];?></h3></a>
                             <time><?=$news['datetime'];?></time>
                             <p><?=substr($news['content'],0,200);?>...</p>
                             <a title="<?=$news['title'];?>" href="<?=$news['url'];?>">mehr lesen...</a>

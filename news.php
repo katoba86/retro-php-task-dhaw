@@ -1,10 +1,10 @@
 <?php
-require_once "./includes/core/helper.php";
+require_once "./php/helper.php";
 
 if(!isset($_GET['id'])){
     echo "Keine Id gegeben!";exit;
 }
-$item = getNewsItem((int)$_GET['id']); //XSS-Prevent durch typecasting!
+$item = getNewsItem((int)$_GET['id']); //SQL Injection wird durch typecasting verhindert!
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ $item = getNewsItem((int)$_GET['id']); //XSS-Prevent durch typecasting!
         <?php
         if(null === $item){
         ?>
-            <h2>Kann den News-Beitrag nicht laden.</h2>
+            <h2>Kann den News-Beitrag nicht laden</h2>
         <?php
         }else{
         ?>

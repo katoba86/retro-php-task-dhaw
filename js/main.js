@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Kontaktformular Validierung
 document.addEventListener('DOMContentLoaded', () => {
+
   const form = document.getElementById('contactForm');
-  if (!form){
+  if (!form){ //Form nicht gefunden
     return;
-  };
+  }
 
   const status = document.getElementById('formStatus');
   const submitBtn = document.getElementById('submitBtn');
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     phone: {
       validate: (value) => {
-        if (!value) return true; // Optional
+        if (!value) return true; // Optionales fed ..
         const phoneRegex = /^[\d\s\-\+\(\)]+$/; // @todo auslandsnummer? Hier nochmal testen
         return value.length >= 6 && phoneRegex.test(value);
       },
@@ -56,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     datenschutz: {
       validate: (value, element) => element.checked,
-      message: 'Bitte akzeptieren Sie die Datenschutzbestimmungen'
+      message: 'Bitte akzeptiern Sie die Datenschutzbestimmungen'
     }
   };
 
-  // Fehlermeldung anzeigen/verstecken
+
   function showError(field, message) {
     const errorEl = document.getElementById(`${field.id}-error`);
     if (errorEl) {
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     field.setAttribute('aria-invalid', 'false');
   }
 
-  // Einzelnes Feld validieren
+
   function validateField(field) {
     const validator = validators[field.name];
     if (!validator) return true;
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Checkbox sofort validieren
+
   const privacyCheckbox = form.querySelector('#datenschutz');
   if (privacyCheckbox) {
     privacyCheckbox.addEventListener('change', () => {
@@ -125,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Formular absenden
+  //Async verfügbar? Check Skip... canIUse? Browserlist...
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -178,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
           clearError(field);
         });
       } else {
-        throw new Error(result.message || 'Ein Fehler ist aufgetreten');
+        throw new Error(result.message || 'Ein Fehler ist aufgetreten'); // Mehr muss man erstmal nicht sehen..
       }
     } catch (error) {
       status.className = 'form-status error show';

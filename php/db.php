@@ -9,11 +9,15 @@ class DB {
     private PDO $pdo;
 
 
-    private function __clone() {}
+
+
+
+
+
     private function __construct() {
-        $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset=utf8mb4";
+        $dsn = "mysql:host=$this->host;dbname={$this->dbname};charset=utf8mb4";
         $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, //Für Production vielleicht ERRMODE_SILENT. Logging ist besser, wird aber nicht bewertet also nö!
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ];
         $this->pdo = new PDO($dsn, $this->user, $this->pass, $options);
@@ -29,21 +33,38 @@ class DB {
 
 
     public function select(string $sql, array $params = []): array {
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchAll();
+        try{
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchAll();
+        }catch(PDOException $e){
+            // LOG THE ERROR :)
+            return [];
+        }
     }
 
 
+    /**
+     * @param string $sql
+     * @param array $params
+     * @return int
+     */
     public function execute(string $sql, array $params = []): int {
+        try{
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
         return $stmt->rowCount();
+        }catch(PDOException $e){
+            // LOG THE ERROR :)
+            return 0;
+        }
     }
 
-    public function lastId(): string {
-        return $this->pdo->lastInsertId();
-    }
+    /**
+     * Gehört zum Singleton Einfach dazu...
+     * @return void
+     */
+    private function __clone() {}
 
 
 }

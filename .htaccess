@@ -1,3 +1,11 @@
-RewriteEngine On
+<FilesMatch "\.sql$">
+    Require all denied
+</FilesMatch>
 
-RewriteRule ^news/([0-9]+)/([^/]+)$ news.php?id=$1&titel=$2 [NC,L]
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^news/([0-9]+)/([^/]+)/?$ news.php?id=$1&titel=$2 [L,QSA]

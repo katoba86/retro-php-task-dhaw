@@ -1,6 +1,6 @@
 <?php
-require_once "./includes/core/helper.php";
-require_once "./includes/core/db.php";
+require_once "../php/helper.php";
+require_once "../php/db.php";
 
 $keys = [
     'name',
@@ -19,7 +19,7 @@ if(count(array_diff($keys, $givenKeys)) !== 0){
 
 
 $db = DB::getInstance();
-$sql = "INSERT INTO `contact` (`name`, `email`, `telefon`, `Nachricht`) VALUES ( :name, :email, :phone, :message)";
+$sql = "INSERT INTO `contact` (`name`, `email`, `phone`, `message`) VALUES ( :name, :email, :phone, :message)";
 
 $params = [
     ':name' => $_POST['name'],

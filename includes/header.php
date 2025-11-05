@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/core/helper.php";
+require_once "./php/helper.php";;
 ?>
 
 

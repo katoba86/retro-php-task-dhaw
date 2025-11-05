@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/core/helper.php";
+require_once "./php/helper.php";
 
 // Einfacher Form Handler - 3 Zeiler wie gewünscht
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include('./includes/header.php')?>
 
     <section class="contactPage page">
-        <form id="contactForm" action="/contact-send.php" method="post" novalidate>
+        <form id="contactForm" action="/includes/contact-send.php" method="post" novalidate>
 
                 <div class="grid grid--two">
                     <div class="field">
