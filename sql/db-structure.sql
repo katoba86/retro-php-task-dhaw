@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db:3306
--- Erstellungszeit: 05. Nov 2025 um 22:43
+-- Erstellungszeit: 05. Nov 2025 um 22:54
 -- Server-Version: 10.11.14-MariaDB-ubu2204-log
 -- PHP-Version: 8.3.27
 
@@ -40,7 +40,10 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`) VALUES
-(1, 'abc', 'kai@willam.email', NULL, 'test');
+(1, 'abc', 'kai@willam.email', NULL, 'test'),
+(2, 'fafdafdafa', 'kai@beispiel.de', '', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum'),
+(3, 'Entfern mich!', 'kai@beispiel.de', '', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum'),
+(4, 'Entfern mich!', 'kai@beispiel.de', '', 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum');
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT für Tabelle `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT für Tabelle `news`
